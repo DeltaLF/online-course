@@ -80,9 +80,11 @@ class CourseShow extends React.Component {
       const courseCards = courses.map((course) => {
         let averageRating =
           course.reviews.length > 0
-            ? course.reviews.reduce((prev, curr) => {
-                return prev + curr.rating;
-              }, 0) / course.reviews.length
+            ? (
+                course.reviews.reduce((prev, curr) => {
+                  return prev + curr.rating;
+                }, 0) / course.reviews.length
+              ).toFixed(2)
             : NaN;
 
         return (
