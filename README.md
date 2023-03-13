@@ -6,7 +6,7 @@
 
 deploy on netlify: [https://velvety-kulfi-650427.netlify.app](https://velvety-kulfi-650427.netlify.app/)  
 
-back-end code is [here](https://github.com/DeltaLF/online-course) on GitHub
+back-end code is [here](https://github.com/DeltaLF/online-course-backend) on GitHub
 
 features:
 1. authentication implemented by jwt token
