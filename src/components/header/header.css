@@ -32,6 +32,11 @@ li .dropdown-menu {
   width: 400px;
 }
 
+.dropdown-menu .empty-shop-item {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
 li .dropdown-item {
   white-space: pre-wrap;
 }

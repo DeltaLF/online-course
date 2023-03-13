@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import {  Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import Header from "./header/Header";
 import UserRegister from "./users/UserRegister";
 import UserLogin from "./users/UserLogin";
@@ -15,7 +15,6 @@ import GoToTop from "./share/goToTop";
 import TopButton from "./share/TopButton";
 
 class App extends React.Component {
-
   render() {
     const { alert } = this.props;
     return (
@@ -55,7 +54,7 @@ class App extends React.Component {
                 }
               />
               <Route
-                path="/user"
+                path="/user/*"
                 element={
                   <PrivateRoute>
                     <UserPage />

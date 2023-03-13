@@ -7,6 +7,7 @@ import "./header.css";
 import "font-awesome/css/font-awesome.min.css";
 import courseCatgory from "../../resources/svgs";
 import SpecialOffer from "./../share/SpecialOffer";
+import { userLogout } from "../../actions";
 
 class Header extends React.Component {
   componentDidMount() {
@@ -28,7 +29,11 @@ class Header extends React.Component {
             </Link>
           </li>
           <li className="nav-item my-auto">
-            <Link to="/user/logout" className="nav-link">
+            <Link
+              to="/"
+              onClick={() => this.props.userLogout()}
+              className="nav-link"
+            >
               <h5> Log out</h5>
             </Link>
           </li>
@@ -53,6 +58,8 @@ class Header extends React.Component {
   }
 
   renderShopItems() {
+    if (this.props.shopCart.length === 0)
+      return <h3 className="empty-shop-item ">no items</h3>;
     return this.props.shopCart.map((item) => {
       return (
         <li key={item._id}>
@@ -151,6 +158,8 @@ const mapStateToProps = (state) => {
     shopCart: state.shopCart,
   };
 };
-export default connect(mapStateToProps, { fetchShopCart, deleteShopCart })(
-  Header
-);
+export default connect(mapStateToProps, {
+  fetchShopCart,
+  deleteShopCart,
+  userLogout,
+})(Header);
