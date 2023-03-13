@@ -6,11 +6,12 @@ import reduxThunk from "redux-thunk";
 
 import App from "./components/App";
 import reducers from "./reducers";
+import { messageClearMiddleware } from "./actions";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducers,
-  composeEnhancers(applyMiddleware(reduxThunk))
+  composeEnhancers(applyMiddleware(reduxThunk, messageClearMiddleware))
 );
 
 ReactDOM.render(
