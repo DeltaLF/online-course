@@ -8,6 +8,7 @@ import {
 import courseCatgory from "../../resources/svgs";
 import SortButton from "./SortButton";
 import { Link } from "react-router-dom";
+import NumberDiscount from "../promation/NumberDiscount";
 
 class CourseShow extends React.Component {
   componentDidMount() {
@@ -57,22 +58,6 @@ class CourseShow extends React.Component {
     }
   }
 
-  renderPromation(course) {
-    if (this.props.newStudent && this.props.newStudent - Date.now() > 0) {
-      return (
-        <li className="list-group-item">
-          <span className="fs-3">{course.price}$</span>
-
-          <small className="mx-2">
-            <del> {course.price * 4}$</del> 75% off
-          </small>
-        </li>
-      );
-    } else {
-      return <li className="list-group-item">Price: {course.price} $</li>;
-    }
-  }
-
   renderCourseCard() {
     const { courses } = this.props;
 
@@ -100,7 +85,12 @@ class CourseShow extends React.Component {
                 <p className="card-text">Description: {course.description}</p>
               </div>
               <ul className="list-group list-group-flush">
-                {this.renderPromation(course)}
+                <li className="list-group-item">
+                  <NumberDiscount
+                    firstVisitTime={this.props.newStudent}
+                    price={course.price}
+                  />
+                </li>
 
                 <li className="list-group-item">
                   Instructor: {course.instructor.username}
