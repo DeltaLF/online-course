@@ -15,7 +15,7 @@ const UserHeader = (props) => {
           <ul className="navbar-nav flex-row">
             <li className="nav-item mx-2">
               <Link to="/user/course" className="nav-link text-white">
-                All coures
+                All courses
               </Link>
             </li>
             <li className="nav-item mx-2">
