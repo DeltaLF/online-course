@@ -1,18 +1,18 @@
 import React, { Fragment } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
 import Header from "./header/Header";
-import UserRegister from "./users/UserRegister";
-import UserLogin from "./users/UserLogin";
-import UserPage from "./users/UserPage";
-import InstructorPage from "./instructor/InstructorPage";
-import CourseDetail from "./share/CourseDetail";
+import UserRegister from "../pages/users/UserRegister";
+import UserLogin from "../pages/users/UserLogin";
+import UserPage from "../pages/users/UserPage";
+import InstructorPage from "../pages/instructor/InstructorPage";
+import CourseDetail from "./common/CourseDetail";
 import PrivateRoute from "./PrivateRoute";
 import { messageClear } from "../actions";
 import { connect } from "react-redux";
-import MainPage from "./main/MainPage";
-import ErrorBoundary from "./share/ErrorBoundary";
-import GoToTop from "./share/goToTop";
-import TopButton from "./share/TopButton";
+import MainPage from "../pages/main/MainPage";
+import ErrorBoundary from "./common/ErrorBoundary";
+import GoToTop from "./common/goToTop";
+import TopButton from "./common/TopButton";
 
 class App extends React.Component {
   render() {

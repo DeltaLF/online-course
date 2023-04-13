@@ -3,7 +3,7 @@ import InstructorHeader from "./InstructorHeader";
 import { Route, Routes, Outlet } from "react-router-dom";
 import CourseCreate from "./CourseCreate";
 import CourseEdit from "./CourseEdit";
-import CourseShow from "../share/CourseShow";
+import CourseShow from "../../components/common/CourseShow";
 import InstructorInfo from "./InstructorInfo";
 
 class InstructorPage extends React.Component {

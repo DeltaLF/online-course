@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import history from "./../../helpers/history";
-import InputTip from "../tips/InputTip";
+import history from "../../helpers/history";
+import InputTip from "../../components/tips/InputTip";
 
 class CourseForm extends React.Component {
   renderInput = (args) => {

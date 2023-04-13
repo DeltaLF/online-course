@@ -1,5 +1,5 @@
 import React from "react";
-import CourseShow from "../share/CourseShow";
+import CourseShow from "../../components/common/CourseShow";
 import bookImage from "../../resources/images/book.jpg";
 
 class MainPage extends React.Component {

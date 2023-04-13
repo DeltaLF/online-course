@@ -1,6 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import InputTip from "../tips/InputTip";
+import InputTip from "../../components/tips/InputTip";
 
 class UserForm extends React.Component {
   renderInput = ({ input, meta, placeholder, type }) => {
