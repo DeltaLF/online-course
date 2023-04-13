@@ -283,7 +283,6 @@ function CourseDetail(props) {
 }
 
 const mapStateToProps = (state) => {
-  //console.log(state);
   return {
     course: state.courses.length ? state.courses[0] : false,
     newStudent: state.newStudent.firstVisited,

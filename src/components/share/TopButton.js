@@ -12,7 +12,6 @@ export default function TopButton() {
     }
   }
   window.onscroll = function (e) {
-    // console.log("onsocrll", e);
     scorllFunction();
   };
 

@@ -1,19 +1,9 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-//import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import "font-awesome/css/font-awesome.min.css";
 import history from "./../../helpers/history";
+import InputTip from "../tips/InputTip";
 
 class CourseForm extends React.Component {
-  renderError({ error, touched }) {
-    if (touched && error) {
-      return <div className="text-danger small">{error}</div>;
-    } else if (touched && !error) {
-      return <div className="text-success small">Looks good!</div>;
-    }
-  }
-
   renderInput = (args) => {
     const { input, meta, placeholder, type } = args;
 
@@ -31,8 +21,7 @@ class CourseForm extends React.Component {
           type={type}
           autoComplete="on"
         />
-
-        {this.renderError(meta)}
+        <InputTip meta={meta} />
       </div>
     );
   };
