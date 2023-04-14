@@ -96,7 +96,7 @@ export const subscribeCourse =
   };
 
 export const fetchCourse =
-  (courseId: CourseType) =>
+  (courseId: string) =>
   async (
     dispatch: ThunkDispatch<ReducerStates, void, ActionWithPayload<any>>
   ) => {
