@@ -5,7 +5,6 @@ import UserHeader from "./UserHeader";
 // user route
 import UserLogout from "./UserLogout";
 import { Route, Routes, Outlet } from "react-router-dom";
-import history from "../../helpers/history";
 import CourseShow from "../../components/common/CourseShow";
 import UserInfo from "./UserInfo";
 

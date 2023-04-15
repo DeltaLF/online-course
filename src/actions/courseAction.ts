@@ -5,6 +5,7 @@ import {
   ReducerStates,
   FetchCourseParamsTypes,
   CourseSortType,
+  ICourseForm,
 } from "./types";
 import { ThunkDispatch } from "redux-thunk";
 import { ActionWithPayload } from "../utils/reducer/reducer.utils";
@@ -60,6 +61,7 @@ export const subscribeCourse =
   ) => {
     const state = getState();
     if (!state.auth.isSignedIn) {
+      console.log("llllllllogin before subscribe");
       history.push("/login");
       dispatch({
         type: MESSAGE_ACTIONS_TYPES.ERROR,
@@ -222,7 +224,7 @@ export const createCourse =
   };
 
 export const editCourse =
-  (formValues: CourseType, courseId: string) =>
+  (formValues: ICourseForm, courseId: string) =>
   async (
     dispatch: ThunkDispatch<ReducerStates, void, ActionWithPayload<any>>
   ) => {

@@ -43,15 +43,18 @@ export enum COURSE_ACTIONS_TYPES {
   FETCH_COURSES = "FETCH_COURSES",
 }
 
-export type CourseType = {
-  _id?: string;
-  price?: number;
+export interface ICourseForm {
   title?: string;
+  description?: string;
+  price?: number;
   category?: string;
+}
+
+export interface CourseType extends ICourseForm {
+  _id?: string;
   instructor: Instructor;
   students?: Student[];
-  description?: string;
-};
+}
 export type Student = {
   username: string;
 };

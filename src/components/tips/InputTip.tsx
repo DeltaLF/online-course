@@ -5,7 +5,7 @@ function InputTip({
   successMsg = "Looks good!",
 }: {
   meta: WrappedFieldMetaProps;
-  successMsg: string;
+  successMsg?: string;
 }) {
   // coupled with Bootstrap + reduxForm
   return (

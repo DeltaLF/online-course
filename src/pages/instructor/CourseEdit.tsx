@@ -3,9 +3,9 @@ import { connect, ConnectedProps } from "react-redux";
 import { editCourse, fetchCourse } from "../../actions";
 import CourseForm from "./CourseForm";
 import { pick } from "lodash";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { RootState } from "../../redux/store";
-import { CourseType } from "../../actions/types";
+import { ICourseForm } from "../../actions/types";
 
 const mapStateToProps = (state: RootState) => {
   return { course: state.courses[0] };
@@ -18,6 +18,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 interface Props extends PropsFromRedux {}
 
 function CourseEdit({ fetchCourse, course, editCourse }: Props) {
+  const navigate = useNavigate();
   const { courseId } = useParams();
   useEffect(() => {
     if (courseId) {
@@ -25,9 +26,10 @@ function CourseEdit({ fetchCourse, course, editCourse }: Props) {
     }
   }, []);
 
-  function onSubmit(formValues: CourseType) {
-    if (course._id) {
-      editCourse(formValues, course._id);
+  function onSubmit(formValues: ICourseForm) {
+    if (courseId) {
+      editCourse(formValues, courseId);
+      navigate("/instructor/course");
     }
   }
 
@@ -45,7 +47,6 @@ function CourseEdit({ fetchCourse, course, editCourse }: Props) {
           "content",
           "category"
         )}
-        // @ts-ignore #since CourseForm hasn't migrated to typescript
         name="Edit"
       />
     </div>
