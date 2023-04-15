@@ -1,5 +1,5 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useEffect } from "react";
+import { ConnectedProps, connect } from "react-redux";
 import {
   fetchCourses,
   subscribeCourse,
@@ -7,20 +7,47 @@ import {
 } from "../../actions";
 import courseCatgory from "../../resources/svgs";
 import SortButton from "./SortButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NumberDiscount from "../promation/NumberDiscount";
+import { RootState } from "../../redux/store";
+import { CoureOwner, CourseType } from "../../actions/types";
 
-class CourseShow extends React.Component {
-  componentDidMount() {
-    const { filterType } = this.props;
-    this.props.fetchCourses({
+const mapStateToProps = (state: RootState) => {
+  const { auth, courses } = state;
+  return { newStudent: state.newStudent.firstVisited, auth, courses };
+};
+
+const connector = connect(mapStateToProps, {
+  fetchCourses,
+  subscribeCourse,
+  unSubscribeCourse,
+});
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+interface Props extends PropsFromRedux {
+  filterType: CoureOwner;
+}
+
+function CourseShow({
+  filterType,
+  auth,
+  courses,
+  newStudent,
+  fetchCourses,
+  subscribeCourse,
+  unSubscribeCourse,
+}: Props) {
+  const navigate = useNavigate();
+  useEffect(() => {
+    fetchCourses({
       filterType,
-      userId: this.props.auth.user ? this.props.auth.user.userId : null,
+      userId: auth.user ? auth.user.userId : null,
     });
-  }
+  }, []);
 
-  functionalButton(course) {
-    if (this.props.filterType === "instructor") {
+  function functionalButton(course: CourseType) {
+    if (filterType === "instructor") {
       return (
         <Link
           className="btn btn-outline-info w-100"
@@ -31,14 +58,16 @@ class CourseShow extends React.Component {
       );
     } else {
       if (
-        this.props.auth.isSignedIn &&
-        course.students.indexOf(this.props.auth.user.userId) >= 0
+        auth.isSignedIn &&
+        course.students &&
+        course?.students.indexOf(auth.user!.userId) >= 0
       ) {
         return (
           <button
             className="btn btn-outline-danger w-100"
             onClick={() => {
-              this.props.unSubscribeCourse(course);
+              unSubscribeCourse(course);
+              navigate("/user/course");
             }}
           >
             Unsubscribe
@@ -49,7 +78,7 @@ class CourseShow extends React.Component {
         <button
           className="btn btn-outline-primary w-100"
           onClick={() => {
-            this.props.subscribeCourse(course);
+            subscribeCourse(course);
           }}
         >
           Subscribe
@@ -58,9 +87,7 @@ class CourseShow extends React.Component {
     }
   }
 
-  renderCourseCard() {
-    const { courses } = this.props;
-
+  function renderCourseCard() {
     if (courses && courses.length > 0) {
       const courseCards = courses.map((course) => {
         let averageRating =
@@ -76,7 +103,11 @@ class CourseShow extends React.Component {
           <div className="col" key={course._id}>
             <div className="card h-100">
               <img
-                src={courseCatgory[course.category.toLowerCase()]}
+                src={
+                  courseCatgory[
+                    course.category.toLowerCase() as keyof typeof courseCatgory
+                  ]
+                }
                 className="card-img-top"
                 alt="course"
               />
@@ -87,7 +118,7 @@ class CourseShow extends React.Component {
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">
                   <NumberDiscount
-                    firstVisitTime={this.props.newStudent}
+                    firstVisitTime={newStudent}
                     price={course.price}
                   />
                 </li>
@@ -115,9 +146,7 @@ class CourseShow extends React.Component {
                       Detail
                     </button> */}
                   </div>
-                  <div className="col-6 p-0">
-                    {this.functionalButton(course)}
-                  </div>
+                  <div className="col-6 p-0">{functionalButton(course)}</div>
                 </div>
               </div>
             </div>
@@ -130,22 +159,15 @@ class CourseShow extends React.Component {
     }
   }
 
-  render() {
-    return (
-      <div className="container mt-3">
-        <SortButton />
-        <div className="row row-cols-1 row-cols-lg-3 g-4 mt-1">
-          {this.renderCourseCard()}
-        </div>
+  return (
+    <div className="container mt-3">
+      <SortButton />
+      <div className="row row-cols-1 row-cols-lg-3 g-4 mt-1">
+        {renderCourseCard()}
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-const mapStateToProps = (state) => {
-  const { auth, courses } = state;
-  return { newStudent: state.newStudent.firstVisited, auth, courses };
-};
 
 export default connect(mapStateToProps, {
   fetchCourses,

@@ -44,16 +44,17 @@ export enum COURSE_ACTIONS_TYPES {
 }
 
 export interface ICourseForm {
-  title?: string;
-  description?: string;
-  price?: number;
-  category?: string;
+  title: string;
+  description: string;
+  price: number;
+  category: string;
 }
 
 export interface CourseType extends ICourseForm {
   _id?: string;
   instructor: Instructor;
-  students?: Student[];
+  students: string[];
+  reviews: IReview[];
 }
 export type Student = {
   username: string;
@@ -64,14 +65,14 @@ export type Instructor = {
 };
 
 export enum CoureOwner {
-  instructor,
-  student,
-  default,
+  instructor = "instructor",
+  student = "student",
+  default = "default",
 }
 export type FetchCourseParamsTypes = {
   filterType: CoureOwner;
-  userId: string;
-  keyWord: string;
+  userId: string | null;
+  keyWord?: string;
 };
 
 export enum CourseSortType {
@@ -91,10 +92,15 @@ export enum REVIEW_ACTIONS_TYPES {
   FETCH_REVIEW = "FETCH_REVIEW",
 }
 
-export type ReviewFormType = {
-  content?: string;
-  rating?: number;
-};
+export interface ReviewFormType {
+  content: string;
+  rating: number;
+}
+
+export interface IReview extends ReviewFormType {
+  date?: Date; // default Date.now
+  reviewer: string;
+}
 
 //student
 
@@ -103,8 +109,8 @@ export enum STUDENT_ACTIONS_TYPES {
 }
 
 export type SpecialOfferType = {
-  firstVisited?: number;
-  remainTime?: Date;
+  firstVisited?: string;
+  remainTime?: number;
 };
 
 // short cart

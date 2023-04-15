@@ -156,7 +156,7 @@ function CourseForm({
 
 const validate = (formValues: ICourseForm) => {
   // same key but the values are all string
-  const errors: { [key in keyof ICourseForm]: string } = {};
+  const errors: { [key in keyof ICourseForm]?: string } = {};
   if (!formValues.title) {
     errors.title = "You must enter a title";
   }
