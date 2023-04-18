@@ -61,8 +61,6 @@ export const subscribeCourse =
   ) => {
     const state = getState();
     if (!state.auth.isSignedIn) {
-      console.log("llllllllogin before subscribe");
-      history.push("/login");
       dispatch({
         type: MESSAGE_ACTIONS_TYPES.ERROR,
         payload: "You need to log in to subscribe a course",
@@ -132,7 +130,6 @@ export const fetchCourses =
     dispatch: ThunkDispatch<ReducerStates, void, ActionWithPayload<any>>
   ) => {
     const { filterType, userId, keyWord } = parameters;
-    console.log("fetchCourses filterType:", filterType);
     // authHeader is not needed, because all peoeple should be able to access all classes
     // filter = {instructor: userId}  for render instructor's classes
     // filter = {students: username}  for render my class

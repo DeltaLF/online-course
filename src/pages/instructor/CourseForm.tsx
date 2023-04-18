@@ -47,6 +47,7 @@ function CourseForm({
 
   function onSubmitHandler(formValues: ICourseForm) {
     onSubmit(formValues);
+    navigate("/instructor/course");
   }
 
   return (

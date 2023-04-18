@@ -51,7 +51,7 @@ export interface ICourseForm {
 }
 
 export interface CourseType extends ICourseForm {
-  _id?: string;
+  _id: string;
   instructor: Instructor;
   students: string[];
   reviews: IReview[];
@@ -64,13 +64,13 @@ export type Instructor = {
   username: string;
 };
 
-export enum CoureOwner {
+export enum CourseOwner {
   instructor = "instructor",
   student = "student",
   default = "default",
 }
 export type FetchCourseParamsTypes = {
-  filterType: CoureOwner;
+  filterType: CourseOwner;
   userId: string | null;
   keyWord?: string;
 };
@@ -129,6 +129,11 @@ export type ShopCartType = {
 };
 
 // reduecer store states
+
+export type Auth = {
+  isSignedIn: boolean;
+  user: UserDataType | null;
+};
 
 export type ReducerStates = {
   // update when all states are refactored
