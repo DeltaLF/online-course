@@ -1,19 +1,8 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-//import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-//import "font-awesome/css/font-awesome.min.css";
+import InputTip from "../../components/tips/InputTip";
 
 class UserForm extends React.Component {
-  renderError({ error, touched }) {
-    if (touched && error) {
-      return <div className="text-danger small">{error}</div>;
-    } else if (touched && !error) {
-      return <div className="text-success small">Looks good!</div>;
-    }
-  }
-
   renderInput = ({ input, meta, placeholder, type }) => {
     const className = `field ${
       meta.error && meta.touched ? "" : "" //"is-invalid" : "is-valid"
@@ -31,8 +20,7 @@ class UserForm extends React.Component {
             autoComplete="on"
           />
         </i>
-
-        {this.renderError(meta)}
+        <InputTip meta={meta} />
       </div>
     );
   };
@@ -44,7 +32,7 @@ class UserForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
-        <div className="mb-3">
+        <div className="mb-2">
           {this.props.name === "Login" ? null : (
             <Field
               name="username"
@@ -55,7 +43,7 @@ class UserForm extends React.Component {
           )}
         </div>
 
-        <div className="mb-3">
+        <div className="mb-2">
           <Field
             formType={this.props.name}
             name="email"
@@ -65,7 +53,7 @@ class UserForm extends React.Component {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-2">
           <Field
             formType={this.props.name}
             name="password"

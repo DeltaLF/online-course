@@ -6,7 +6,7 @@ import { fetchShopCart, deleteShopCart } from "../../actions/shopCartAction";
 import "./header.css";
 import "font-awesome/css/font-awesome.min.css";
 import courseCatgory from "../../resources/svgs";
-import SpecialOffer from "./../share/SpecialOffer";
+import SpecialOffer from "../promation/SpecialOffer";
 import { userLogout } from "../../actions";
 
 class Header extends React.Component {

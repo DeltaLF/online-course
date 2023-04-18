@@ -3,7 +3,7 @@ import InstructorHeader from "./InstructorHeader";
 import { Route, Routes, Outlet } from "react-router-dom";
 import CourseCreate from "./CourseCreate";
 import CourseEdit from "./CourseEdit";
-import CourseShow from "../share/CourseShow";
+import CourseShow from "../../components/common/CourseShow";
 import InstructorInfo from "./InstructorInfo";
 
 class InstructorPage extends React.Component {
@@ -25,10 +25,7 @@ class InstructorPage extends React.Component {
               element={<CourseShow filterType="instructor" />}
             />
             <Route path="course/new" element={<CourseCreate />} />
-            <Route
-              path="instructor/course/:courseId/edit"
-              element={<CourseEdit />}
-            />
+            <Route path="course/:courseId/edit" element={<CourseEdit />} />
             <Route path="statistic" element={<InstructorInfo />} />
           </Route>
         </Routes>

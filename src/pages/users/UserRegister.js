@@ -9,7 +9,6 @@ class UserRegister extends React.Component {
   };
 
   render() {
-    console.log("render", this.props);
     return (
       <div className="container">
         <div className="row mt-5">

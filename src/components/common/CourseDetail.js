@@ -7,6 +7,7 @@ import courseCatgory from "../../resources/svgs";
 import ReviewForm from "./ReviewForm";
 import { createReview } from "../../actions/reviewAction";
 import { addShopCart } from "../../actions/shopCartAction";
+import NumberDiscount from "../promation/NumberDiscount";
 
 function CourseDetail(props) {
   const { course } = props;
@@ -50,22 +51,6 @@ function CourseDetail(props) {
     }
   }
 
-  function renderPromation(course) {
-    if (props.newStudent && props.newStudent - Date.now() > 0) {
-      return (
-        <Fragment>
-          <span className="fs-3">{course.price}$</span>
-
-          <small className="mx-2">
-            <del> {course.price * 4}$</del> 75% off
-          </small>
-        </Fragment>
-      );
-    } else {
-      return <Fragment>Price: {course.price} $</Fragment>;
-    }
-  }
-
   function renderSubscribeBtn(course) {
     if (
       props.auth.isSignedIn &&
@@ -102,7 +87,12 @@ function CourseDetail(props) {
           className="card-img-top"
           alt="course"
         />
-        <p className="mt-3">{renderPromation(course)}</p>
+        <p className="mt-3">
+          <NumberDiscount
+            firstVisitTime={props.newStudent}
+            price={course.price}
+          />
+        </p>
         <button
           className="btn btn-outline-warning w-75 mt-3"
           onClick={() => {
@@ -283,7 +273,6 @@ function CourseDetail(props) {
 }
 
 const mapStateToProps = (state) => {
-  //console.log(state);
   return {
     course: state.courses.length ? state.courses[0] : false,
     newStudent: state.newStudent.firstVisited,
