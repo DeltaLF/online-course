@@ -1,4 +1,5 @@
 import React from "react";
+import ErorrPage from "../../pages/error/ErrorPage";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -13,7 +14,9 @@ class ErrorBoundary extends React.Component {
   }
   render() {
     if (this.state.hasError) {
-      return <h1>Something went wrong</h1>;
+      return (
+        <ErorrPage statusCode={400} errorMessage="Something went wrong." />
+      );
     }
     return this.props.children;
   }
