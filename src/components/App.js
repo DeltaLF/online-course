@@ -13,6 +13,7 @@ import MainPage from "../pages/main/MainPage";
 import ErrorBoundary from "./common/ErrorBoundary";
 import GoToTop from "./common/goToTop";
 import TopButton from "./common/TopButton";
+import ErorrPage from "../pages/error/ErrorPage";
 
 class App extends React.Component {
   render() {
@@ -63,6 +64,12 @@ class App extends React.Component {
               />
             </Route>
 
+            <Route
+              path="*"
+              element={
+                <ErorrPage errorMessage="Page not found." statusCode={404} />
+              }
+            />
             {/* <PrivateRoute path="/instructor" component={InstructorPage} />
             <PrivateRoute path="/user/" component={UserPage} /> */}
           </Routes>
