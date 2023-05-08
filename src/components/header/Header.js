@@ -103,7 +103,7 @@ class Header extends React.Component {
   }
   render() {
     return (
-      <div className="stickyHeader shadow bg-body rounded">
+      <header className="stickyHeader shadow bg-body rounded">
         <SpecialOffer />
         <div className="navbar navbar-expand-lg navbar-light light bg-light">
           <div className="container-fluid">
@@ -147,7 +147,7 @@ class Header extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </header>
     );
   }
 }

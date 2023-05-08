@@ -1,26 +1,28 @@
+import "./styles/main.scss";
 import React, { Fragment } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
-import Header from "./header/Header";
-import UserRegister from "../pages/users/UserRegister";
-import UserLogin from "../pages/users/UserLogin";
-import UserPage from "../pages/users/UserPage";
-import InstructorPage from "../pages/instructor/InstructorPage";
-import CourseDetail from "./common/CourseDetail";
-import PrivateRoute from "./PrivateRoute";
-import { messageClear } from "../actions";
+import Header from "./components/header/Header";
+import UserRegister from "./pages/users/UserRegister";
+import UserLogin from "./pages/users/UserLogin";
+import UserPage from "./pages/users/UserPage";
+import InstructorPage from "./pages/instructor/InstructorPage";
+import CourseDetail from "./components/common/CourseDetail";
+import PrivateRoute from "./components/PrivateRoute";
+import { messageClear } from "./actions";
 import { connect } from "react-redux";
-import MainPage from "../pages/main/MainPage";
-import ErrorBoundary from "./common/ErrorBoundary";
-import GoToTop from "./common/goToTop";
-import TopButton from "./common/TopButton";
-import ErorrPage from "../pages/error/ErrorPage";
+import MainPage from "./pages/main/MainPage";
+import ErrorBoundary from "./components/common/ErrorBoundary";
+import GoToTop from "./components/common/goToTop";
+import TopButton from "./components/common/TopButton";
+import ErorrPage from "./pages/error/ErrorPage";
+import Footer from "./components/footer/Footer";
 
 class App extends React.Component {
   render() {
     const { alert } = this.props;
     return (
       <ErrorBoundary>
-        <div className="mb-5">
+        <>
           {alert.message && (
             <div className={`fixed-bottom mb-0 alert opacity-50 ${alert.type}`}>
               {alert.message}
@@ -36,6 +38,7 @@ class App extends React.Component {
                   <Header />
                   <TopButton />
                   <Outlet />
+                  <Footer />
                 </Fragment>
               }
             >
@@ -73,7 +76,7 @@ class App extends React.Component {
             {/* <PrivateRoute path="/instructor" component={InstructorPage} />
             <PrivateRoute path="/user/" component={UserPage} /> */}
           </Routes>
-        </div>
+        </>
       </ErrorBoundary>
     );
   }
