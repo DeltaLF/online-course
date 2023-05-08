@@ -62,7 +62,7 @@ function CourseCard({
         </ul>
         <div className="card-body card-body--bottom">
           <div className="row">
-            <div className="col-6 p-0">
+            <div className="col-6 px-3">
               <Link
                 className="btn btn-outline-success w-100"
                 to={`/course/${course._id}/detail`}
@@ -70,7 +70,7 @@ function CourseCard({
                 Detail
               </Link>
             </div>
-            <div className="col-6 p-0">
+            <div className="col-6 px-3">
               <FunctionalButton
                 course={course}
                 filterType={filterType}
