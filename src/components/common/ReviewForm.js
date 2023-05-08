@@ -10,7 +10,7 @@ class ReviewForm extends React.Component {
   render(args) {
     return (
       <div className="leaveComment">
-        <div className="card m-0">
+        <div className="card m-0 p-3">
           <form
             onSubmit={this.props.handleSubmit(this.onSubmit)}
             className="p-0"
@@ -71,8 +71,8 @@ class ReviewForm extends React.Component {
                 <label htmlFor="1">☆</label>{" "} */}
               </div>
             </div>
-            <div className="row ">
-              <div className="col-7 py-0">
+            <div className="row">
+              <div className="col-9 py-0">
                 <Field
                   placeholder="I would like to say that..."
                   name="content"

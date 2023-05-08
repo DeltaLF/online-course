@@ -33,13 +33,21 @@ class App extends React.Component {
             <Route
               path="/"
               element={
-                <Fragment>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    minHeight: "100vh",
+                  }}
+                >
                   <GoToTop />
                   <Header />
                   <TopButton />
-                  <Outlet />
+                  <div style={{ flex: 1 }}>
+                    <Outlet />
+                  </div>
                   <Footer />
-                </Fragment>
+                </div>
               }
             >
               <Route path="register" element={<UserRegister />} />

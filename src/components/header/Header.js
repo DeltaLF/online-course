@@ -62,7 +62,7 @@ class Header extends React.Component {
       return <h3 className="empty-shop-item ">no items</h3>;
     return this.props.shopCart.map((item) => {
       return (
-        <li key={item._id}>
+        <li key={item._id} className="px-2">
           <Link
             className="dropdown-item px-0 py-2 border-bottom"
             to={`/course/${item._id}/detail`}
