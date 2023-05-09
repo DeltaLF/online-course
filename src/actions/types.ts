@@ -33,6 +33,24 @@ export type Message = {
 };
 
 // course
+export enum CourseCategory {
+  Others = "Others",
+  Design = "Design",
+  Software = "Software",
+  Bussiness = "Bussiness",
+  Photography = "Photography",
+  Music = "Music",
+}
+
+const bodyStyles = window.getComputedStyle(document.body);
+export const CourseCategoryColorMap: Record<CourseCategory, string> = {
+  Others: bodyStyles.getPropertyValue("--color-course-others"),
+  Design: bodyStyles.getPropertyValue("--color-course-design"),
+  Software: bodyStyles.getPropertyValue("--color-course-software"),
+  Bussiness: bodyStyles.getPropertyValue("--color-course-bussiness"),
+  Photography: bodyStyles.getPropertyValue("--color-course-photography"),
+  Music: bodyStyles.getPropertyValue("--color-course-music"),
+};
 
 export enum COURSE_ACTIONS_TYPES {
   SUBSCRIBE_COURSE = "SUBSCRIBE_COURSE",
@@ -47,7 +65,7 @@ export interface ICourseForm {
   title: string;
   description: string;
   price: number;
-  category: string;
+  category: CourseCategory;
 }
 
 export interface CourseType extends ICourseForm {
@@ -56,6 +74,20 @@ export interface CourseType extends ICourseForm {
   students: string[];
   reviews: IReview[];
 }
+
+export type ICourseByCategory = {
+  [key in CourseCategory]: {
+    count: number;
+    categoryIncome: number;
+    categoryStudent: number;
+  };
+};
+
+export interface IAllCourse {
+  totalStudents: number;
+  totalIncome: number;
+}
+
 export type Student = {
   username: string;
 };
