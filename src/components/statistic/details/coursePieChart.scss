@@ -1,0 +1,9 @@
+.course-pie-chart-container {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+
+  @media screen and (max-width: 800px) {
+    width: 80%;
+  }
+}
