@@ -165,7 +165,7 @@ function CourseDetail(props) {
 
   function renderComments(course) {
     if (course.reviews.length === 0) {
-      return <h1>There are no comments...</h1>;
+      return <h1>There is no comment...</h1>;
     }
     function renderStars(n) {
       return Array.apply(null, Array(5)).map((empty, ind) => {
