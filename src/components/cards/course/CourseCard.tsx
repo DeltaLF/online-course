@@ -41,7 +41,7 @@ function CourseCard({
           alt="course"
         />
         <div className="card-body">
-          <h4 className="card-title">{course.title}</h4>
+          <h2 className="card-title">{course.title}</h2>
           <p className="card-text">Description: {course.description}</p>
         </div>
         <ul className="list-group list-group-flush">

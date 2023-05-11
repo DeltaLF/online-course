@@ -17,7 +17,7 @@ class ReviewForm extends React.Component {
           >
             <h3 className="mx-2">Leave a comment:</h3>
             <div className="d-flex">
-              <h5>Rating:</h5>
+              <h4>Rating:</h4>
               <div className="rating">
                 <Field
                   component="input"

@@ -21,7 +21,7 @@ function CourseCardGroup({
   const { firstVisited } = newStudent;
 
   return (
-    <div className="row row-cols-1 row-cols-lg-3 g-4 mt-1">
+    <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mt-1">
       {courses && courses.length > 0 ? (
         // _id is assgined from mongoDB
         courses.map((course) => (

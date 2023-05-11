@@ -8,7 +8,7 @@ const UserHeader = (props) => {
         <div className="align-items-start flex-column">
           <div className="row">
             <Link to="/user/course" className="navbar-brand">
-              <h3> My learning</h3>
+              <h2> My learning</h2>
             </Link>
           </div>
 
