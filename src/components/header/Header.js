@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SearhBar from "./SearchBar";
 import { connect } from "react-redux";
 import { fetchShopCart, deleteShopCart } from "../../actions/shopCartAction";
-import "./header.css";
+import "./header.scss";
 import "font-awesome/css/font-awesome.min.css";
 import courseCatgory from "../../resources/svgs";
 import SpecialOffer from "../promation/SpecialOffer";
@@ -17,15 +17,15 @@ class Header extends React.Component {
   renderUserSpace() {
     if (this.props.isSignedIn) {
       return (
-        <Fragment>
+        <>
           <li className="nav-item my-auto">
             <Link to="/instructor/course" className="nav-link">
-              <h5> My teaching</h5>
+              My teaching
             </Link>
           </li>
           <li className="nav-item my-auto">
             <Link to="/user/course" className="nav-link">
-              <h5>My learning</h5>
+              My learning
             </Link>
           </li>
           <li className="nav-item my-auto">
@@ -34,10 +34,10 @@ class Header extends React.Component {
               onClick={() => this.props.userLogout()}
               className="nav-link"
             >
-              <h5> Log out</h5>
+              Log out
             </Link>
           </li>
-        </Fragment>
+        </>
       );
     } else {
       return (

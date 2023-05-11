@@ -37,16 +37,16 @@ function CourseDetail(props) {
   function detailHeader(course) {
     if (!Array.isArray(course)) {
       return (
-        <Fragment>
-          <h5>
+        <>
+          <p className="h5">
             {" "}
             {course.category} {">"}
-          </h5>
+          </p>
           <h1>{course.title.toUpperCase()}</h1>
-          <h4>{course.description}</h4>
+          <h2>{course.description}</h2>
           <p>{course.students.length} students</p>
           <p>Created by {course.instructor.username}</p>
-        </Fragment>
+        </>
       );
     }
   }
@@ -99,14 +99,14 @@ function CourseDetail(props) {
             props.addShopCart(course);
           }}
         >
-          <h5> Add to cart</h5>
+          Add to cart
         </button>
         {renderSubscribeBtn(course)}
         {/* <button className="btn btn-outline-primary w-75 my-3">
           <h5> Subscribe now</h5>
         </button> */}
 
-        <h5>This course includes: </h5>
+        <p className="h5">This course includes: </p>
         <ul className="fontAwesome px-3 text-start">
           <li className="list-group-item px-4"> &#xf03d; 2 hours content</li>
 
@@ -126,7 +126,7 @@ function CourseDetail(props) {
     return Array.apply(null, Array(seeds)).map((empty, ind) => {
       return (
         <div key={ind}>
-          <h5>Chapter {ind + 1}</h5>
+          <h3>Chapter {ind + 1}</h3>
           <p className="txtIndent">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Repellendus natus eos molestiae fugiat. Maxime, possimus autem?
@@ -223,7 +223,7 @@ function CourseDetail(props) {
   function renderCommentArea(course) {
     return (
       <div className="commentArea mt-5">
-        <h1>Comments:</h1>
+        <h2>Comments:</h2>
         {/* leave comment */}
         <ReviewForm onSubmit={onSubmit} />
         {/* leave comment */}
@@ -261,9 +261,7 @@ function CourseDetail(props) {
         </div>
 
         <div className="card">
-          <div className="card-header">
-            <h2>course content</h2>
-          </div>
+          <div className="card-header h2">course content</div>
           <div className="card-body">{contentRender(course)}</div>
         </div>
         {renderCommentArea(course)}

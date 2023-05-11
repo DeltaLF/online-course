@@ -25,19 +25,19 @@ function InfoComponent({ courses, user, isInstructor }: IInfoComponentProps) {
           courseByCategory[category as keyof typeof CourseCategory]["count"]
         }`}</h3>
         {isInstructor && (
-          <h5 className="mr-5">
+          <h4 className="mr-5">
             {`Category students: ${
               courseByCategory[category as keyof typeof CourseCategory][
                 "categoryStudent"
               ]
             }`}
-          </h5>
+          </h4>
         )}
-        <h5>{`Category ${isInstructor ? "income" : "expense"}: ${
+        <h4>{`Category ${isInstructor ? "income" : "expense"}: ${
           courseByCategory[category as keyof typeof CourseCategory][
             "categoryIncome"
           ]
-        }$`}</h5>
+        }$`}</h4>
       </li>
     );
   }
